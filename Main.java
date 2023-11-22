@@ -7,45 +7,31 @@ public class Main {
         // 创建一个新的团队管理器
         TeamManager teamManager = new TeamManager();
 
-        // 创建一个新的CreateTeamCommand
-        CreateTeamCommand createTeamCommand = new CreateTeamCommand(sc, teamManager);
-        createTeamCommand.execute();
+        // 创建一个新的CommandFactory
+        CommandFactory commandFactory = new CommandFactory(teamManager, sc);
 
-        // Set the current team
-        SetCuttentTeamCommand setCurrentTeam = new SetCuttentTeamCommand(sc, teamManager);
-        setCurrentTeam.execute();
+        // 在一个循环中不断地获取用户的输入，并执行相应的命令
+        while (true) {
+            System.out.println("Sport Teams Management System (STMS)");
+            System.out.println("c = create team, g = set current team, a = add player, m = modify player's" + //
+                    "position, d = delete player, s = show team, p = display all teams, t = change" + //
+                    "team's name, u = undo, r = redo, l = list undo/redo, x = exit system");
+            if (teamManager.getCurrentTeam() != null) {
+                System.out.println(teamManager.showCurrentTeam());
+            }
+            System.out.print("Please enter command [ c | g | a | m | d | s | p | t | u | r | l | x ] :-");
+            String commandType = sc.nextLine();
 
-        // 使用PlayerFactory创建球员并设置他们的位置
-        Player player1 = PlayerFactory.createPlayer("P001", "John Doe");
-        player1.setPosition(1); // goalkeeper
-        Player player2 = PlayerFactory.createPlayer("P002", "Jane Doe");
-        player2.setPosition(2); // defender
-        Player player3 = PlayerFactory.createPlayer("P003", "Mike Smith");
-        player3.setPosition(3); // midfielder
-        Player player4 = PlayerFactory.createPlayer("P004", "Emma Jones");
-        player4.setPosition(4); // forward
+            // 根据用户的输入创建相应的命令对象
+            Command command = commandFactory.createCommand(commandType);
 
-        // 将球员添加到球队中
-        AddPlayerCommand add = new AddPlayerCommand(sc, teamManager);
-        add.execute();
-        // Modify a player's position in the current team
-        // teamManager.modifyPlayerPosition("P001", 4);
-
-        // 获取并显示当前团队
-        Team currentTeam = teamManager.getCurrentTeam();
-        if (currentTeam != null) {
-            currentTeam.displayTeam();
+            // 如果命令对象不为null，则执行命令
+            if (command != null) {
+                command.execute();
+            } else {
+                System.out.println("Invalid command");
+            }
         }
 
-        // Delete a player from the current team
-        teamManager.deletePlayer("P001");
-        currentTeam.displayTeam();
-
-        teamManager.displayAllTeams();
-
-        teamManager.setCurrentTeam("V001");
-        // Change the name of the current team
-        teamManager.changeCurrentTeamName("New Team Name");
-        teamManager.displayAllTeams();
     }
 }

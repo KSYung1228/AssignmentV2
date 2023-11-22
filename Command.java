@@ -1,7 +1,6 @@
 public interface Command {
+    String getDescription();
+
     void execute();
 
-    void undo();
-
-    void redo();
 }

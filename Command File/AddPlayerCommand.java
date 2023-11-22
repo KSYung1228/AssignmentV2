@@ -1,9 +1,11 @@
 import java.util.Scanner;
 
-public class AddPlayerCommand implements Command {
+public class AddPlayerCommand implements Command, Memento {
     private Scanner sc;
     private TeamManager teamManager;
     private String input, playerID, playerName;
+    private Player addedPlayer;
+    private int position;
     Team currentTeam;
 
     public AddPlayerCommand(Scanner sc, TeamManager teamManager) {
@@ -26,26 +28,38 @@ public class AddPlayerCommand implements Command {
             } else if (currentTeam.getClass().getName().equals("VolleyballTeam")) {
                 System.out.print("Position (1 = attacker | 2 = defender):-");
             }
-            int position = sc.nextInt();
+            position = sc.nextInt();
             sc.nextLine();
 
-            Player newPlayer = PlayerFactory.createPlayer(playerID, playerName);
-            newPlayer.setPosition(position);
+            addedPlayer = PlayerFactory.createPlayer(playerID, playerName);
+            addedPlayer.setPosition(position);
 
-            currentTeam.addPlayer(newPlayer);
+            currentTeam.addPlayer(addedPlayer);
+            System.out.println("Player is added.");
         } else {
             System.out.println("No current team. Can't add player.");
         }
+        teamManager.pushCommand(this);
     }
 
     @Override
     public void undo() {
-
+        if (currentTeam != null) {
+            currentTeam.removePlayer(addedPlayer);
+        }
     }
 
     @Override
     public void redo() {
-
+        if (currentTeam != null) {
+            addedPlayer = PlayerFactory.createPlayer(playerID, playerName);
+            addedPlayer.setPosition(position);
+            currentTeam.addPlayer(addedPlayer);
+        }
     }
 
+    @Override
+    public String getDescription() {
+        return "Add player, " + playerID + ", " + playerName;
+    }
 }
