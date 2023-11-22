@@ -12,8 +12,8 @@ public class ListUndoRedoCommand implements Command {
 
     @Override
     public void execute() {
-        teamManager.showHistoryUndoList();
-        teamManager.showHistoryRedoList();
+        teamManager.showUndoList();
+        teamManager.showRedoList();
     }
 
 }

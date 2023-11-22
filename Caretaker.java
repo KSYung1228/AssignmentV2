@@ -46,18 +46,18 @@ public class Caretaker {
     }
 
     public void showHistoryUndoList() {
-        System.out.println("History Undo List");
+        System.out.println("Undo List");
         for (Memento memento : historyUndoList) {
             System.out.println("-- " + memento.getDescription());
         }
-        System.out.println("-- End of history undo list --");
+        System.out.println("-- End of undo list --");
     }
 
     public void showHistoryRedoList() {
-        System.out.println("History Redo List");
+        System.out.println("Redo List");
         for (Memento memento : historyRedoList) {
             System.out.println("-- " + memento.getDescription());
         }
-        System.out.println("-- End of history redo list --");
+        System.out.println("-- End of redo list --");
     }
 }

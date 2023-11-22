@@ -16,16 +16,16 @@ public class Main {
             System.out.println("c = create team, g = set current team, a = add player, m = modify player's" + //
                     "position, d = delete player, s = show team, p = display all teams, t = change" + //
                     "team's name, u = undo, r = redo, l = list undo/redo, x = exit system");
-            if (teamManager.getCurrentTeam() != null) {
+            if (teamManager.checkTeamList()) {
                 System.out.println(teamManager.showCurrentTeam());
             }
             System.out.print("Please enter command [ c | g | a | m | d | s | p | t | u | r | l | x ] :-");
             String commandType = sc.nextLine();
 
-            // 根据用户的输入创建相应的命令对象
+            // Base the user input to create command
             Command command = commandFactory.createCommand(commandType);
 
-            // 如果命令对象不为null，则执行命令
+            // if command != null , execute the command
             if (command != null) {
                 command.execute();
             } else {

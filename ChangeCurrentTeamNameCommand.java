@@ -13,11 +13,16 @@ public class ChangeCurrentTeamNameCommand implements Command, Memento {
 
     @Override
     public void execute() {
-        System.out.print("Please input new name of the current team:-");
-        oldTeamName = teamManager.getCurrentTeam().getName();
-        newTeamName = sc.nextLine();
-        teamManager.changeCurrentTeamName(newTeamName);
-        teamManager.pushCommand(this);
+        try {
+            System.out.print("Please input new name of the current team:-");
+            oldTeamName = teamManager.getCurrentTeam().getName();
+            newTeamName = sc.nextLine();
+            teamManager.changeCurrentTeamName(newTeamName);
+            teamManager.pushCommand(this);
+            System.out.println("Team's name is updated.");
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     @Override

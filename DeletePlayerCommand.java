@@ -13,17 +13,21 @@ public class DeletePlayerCommand implements Command, Memento {
 
     @Override
     public void execute() {
-        System.out.print("Please input player ID:-");
-        playerId = sc.nextLine();
+        try {
+            System.out.print("Please input player ID:-");
+            playerId = sc.nextLine();
 
-        // Save the player before deleting
-        deletedPlayer = teamManager.getPlayer(playerId);
+            // Save the player before deleting
+            deletedPlayer = teamManager.getPlayer(playerId);
 
-        if (deletedPlayer != null) {
-            teamManager.deletePlayer(playerId);
+            if (deletedPlayer != null) {
+                teamManager.deletePlayer(playerId);
+            }
+            teamManager.pushCommand(this);
+            System.out.println("Player is deleted.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        teamManager.pushCommand(this);
-        System.out.println("Player is deleted.");
     }
 
     @Override

@@ -1,4 +1,5 @@
-public class UndoCommand implements Command {
+
+public class UndoCommand implements Command, Memento {
     private TeamManager teamManager;
 
     public UndoCommand(TeamManager teamManager) {
@@ -13,6 +14,15 @@ public class UndoCommand implements Command {
     @Override
     public void execute() {
         teamManager.undo();
+    }
+
+    @Override
+    public void undo() {
+    }
+
+    @Override
+    public void redo() {
+
     }
 
 }

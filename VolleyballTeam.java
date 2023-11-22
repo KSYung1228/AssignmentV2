@@ -9,7 +9,6 @@ public class VolleyballTeam extends Team {
     }
 
     public void updatePlayerPosition() {
-
     }
 
     public void displayTeam() {
@@ -29,9 +28,17 @@ public class VolleyballTeam extends Team {
 
         System.out.println(getName() + "(" + getTeamID() + ")");
         System.out.println("Attacker:");
-        System.out.print(attackers.toString());
+        if (attackers.isEmpty()) {
+            System.out.println("NIL");
+        } else {
+            System.out.print(attackers.toString());
+        }
         System.out.println("Defender:");
-        System.out.print(defenders.toString());
+        if (defenders.isEmpty()) {
+            System.out.println("NIL");
+        } else {
+            System.out.print(defenders.toString());
+        }
     }
 
 }

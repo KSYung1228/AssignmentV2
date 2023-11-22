@@ -11,6 +11,13 @@ public class TeamManager {
         previousPositions = new HashMap<>();
     }
 
+    public boolean checkTeamList() {
+        if (teams != null && teams.contains(currentTeam)) {
+            return true;
+        }
+        return false;
+    }
+
     public void addTeam(Team team) {
         this.teams.add(team);
         setCurrentTeam(team.getTeamID());
@@ -108,6 +115,13 @@ public class TeamManager {
 
     public void removeTeam(Team team) {
         teams.remove(team);
+        if (team.equals(currentTeam)) {
+            if (teams.isEmpty()) {
+                currentTeam = null;
+            } else {
+                currentTeam = teams.get(0);
+            }
+        }
     }
 
     public Player getPlayer(String playerId) {

@@ -37,13 +37,29 @@ public class FootBallTeam extends Team {
 
         System.out.println(getName() + " (" + getTeamID() + ") ");
         System.out.println("Goal Keeper:");
-        System.out.print(goalkeeper.toString());
+        if (goalkeeper.isEmpty()) {
+            System.out.println("NIL");
+        } else {
+            System.out.print(goalkeeper.toString());
+        }
         System.out.println("Defender:");
-        System.out.print(defenders.toString());
+        if (defenders.isEmpty()) {
+            System.out.println("NIL");
+        } else {
+            System.out.print(defenders.toString());
+        }
         System.out.println("Midfielder:");
-        System.out.print(midfielder.toString());
+        if (midfielder.isEmpty()) {
+            System.out.println("NIL");
+        } else {
+            System.out.print(midfielder.toString());
+        }
         System.out.println("Forward:");
-        System.out.print(forward.toString());
+        if (forward.isEmpty()) {
+            System.out.println("NIL");
+        } else {
+            System.out.print(forward.toString());
+        }
     }
 
 }
