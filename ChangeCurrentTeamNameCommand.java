@@ -5,10 +5,12 @@ public class ChangeCurrentTeamNameCommand implements Command, Memento {
     private Scanner sc;
     private String oldTeamName;
     private String newTeamName;
+    private Team team;
 
-    public ChangeCurrentTeamNameCommand(Scanner sc, TeamManager teamManager) {
+    public ChangeCurrentTeamNameCommand(Scanner sc, TeamManager teamManager, Team team) {
         this.sc = sc;
         this.teamManager = teamManager;
+        this.team = team;
     }
 
     @Override
@@ -39,7 +41,7 @@ public class ChangeCurrentTeamNameCommand implements Command, Memento {
 
     @Override
     public String getDescription() {
-        return "Change team's name, " + oldTeamName + " to " + newTeamName;
+        return "Change team's name, " + team.getTeamID() + " , " + newTeamName;
     }
 
 }

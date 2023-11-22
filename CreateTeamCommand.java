@@ -51,7 +51,7 @@ public class CreateTeamCommand implements Command, Memento {
 
     @Override
     public String getDescription() {
-        return "Create " + Type + " team, " + teamID + ", " + teamName;
+        return "Create " + newTeam.getClass() + " team, " + teamID + ", " + teamName;
     }
 
 }

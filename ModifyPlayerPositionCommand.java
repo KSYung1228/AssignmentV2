@@ -49,6 +49,20 @@ public class ModifyPlayerPositionCommand implements Command, Memento {
 
     @Override
     public String getDescription() {
-        return "Modify player position, ID: " + playerId + ", New Position: " + newPosition;
+        return "Modify player position, Player ID: " + playerId + ", New position: "
+                + getPositionDescription(newPosition);
+    }
+
+    private String getPositionDescription(int position) {
+        String[] footballPositions = { "goal keeper", "defender", "midfielder", "forward" };
+        String[] volleyballPositions = { "attacker", "defender" };
+
+        if (currentTeam.getClass().getName().equals("FootBallTeam")) {
+            return footballPositions[position - 1];
+        } else if (currentTeam.getClass().getName().equals("VolleyballTeam")) {
+            return volleyballPositions[position - 1];
+        } else {
+            return "unknown position";
+        }
     }
 }

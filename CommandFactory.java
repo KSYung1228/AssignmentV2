@@ -28,7 +28,7 @@ public class CommandFactory {
                 case "p":
                     return new DisplayAllTeamCommand(teamManager);
                 case "t":
-                    return new ChangeCurrentTeamNameCommand(sc, teamManager);
+                    return new ChangeCurrentTeamNameCommand(sc, teamManager, teamManager.getCurrentTeam());
                 case "u":
                     return new UndoCommand(teamManager);
                 case "r":

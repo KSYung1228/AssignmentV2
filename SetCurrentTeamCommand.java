@@ -20,9 +20,13 @@ public class SetCurrentTeamCommand implements Command, Memento {
         // Save the old team ID
         oldTeamID = teamManager.getCurrentTeam().getTeamID();
 
-        teamManager.setCurrentTeam(teamID);
-        teamManager.pushCommand(this);
-        System.out.println("Chnaged current team to " + teamID);
+        if (teamManager.teamExists(teamID)) {
+            teamManager.setCurrentTeam(teamID);
+            teamManager.pushCommand(this);
+            System.out.println("Changed current team to " + teamID);
+        } else {
+            System.out.println(teamID + " is not found!!");
+        }
     }
 
     @Override

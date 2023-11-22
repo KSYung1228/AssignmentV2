@@ -153,4 +153,13 @@ public class TeamManager {
     public String showCurrentTeam() {
         return "The current team is " + currentTeam.getTeamID() + " " + currentTeam.getName();
     }
+
+    public boolean teamExists(String teamID) {
+        for (Team team : teams) {
+            if (team.getTeamID().equals(teamID)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
