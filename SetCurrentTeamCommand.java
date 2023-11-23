@@ -22,7 +22,7 @@ public class SetCurrentTeamCommand implements Command, Memento {
 
         if (teamManager.teamExists(teamID)) {
             teamManager.setCurrentTeam(teamID);
-            teamManager.pushCommand(this);
+            // teamManager.pushCommand(this);
             System.out.println("Changed current team to " + teamID);
         } else {
             System.out.println(teamID + " is not found!!");

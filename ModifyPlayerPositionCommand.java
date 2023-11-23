@@ -49,7 +49,7 @@ public class ModifyPlayerPositionCommand implements Command, Memento {
 
     @Override
     public String getDescription() {
-        return "Modify player position, Player ID: " + playerId + ", New position: "
+        return "Modify player position, " + playerId + ", "
                 + getPositionDescription(newPosition);
     }
 
