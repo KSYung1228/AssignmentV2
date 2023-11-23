@@ -35,7 +35,7 @@ public class FootBallTeam extends Team {
             }
         }
 
-        System.out.println(getName() + " (" + getTeamID() + ") ");
+        System.out.println(getClass().toString().replace("class", "") + " " + getName() + " (" + getTeamID() + ") ");
         System.out.println("Goal Keeper:");
         if (goalkeeper.isEmpty()) {
             System.out.println("NIL");

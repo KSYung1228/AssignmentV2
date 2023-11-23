@@ -26,7 +26,7 @@ public class VolleyballTeam extends Team {
             }
         }
 
-        System.out.println(getName() + "(" + getTeamID() + ")");
+        System.out.println(getClass().toString().replace("class", "") + " " + getName() + "(" + getTeamID() + ")");
         System.out.println("Attacker:");
         if (attackers.isEmpty()) {
             System.out.println("NIL");

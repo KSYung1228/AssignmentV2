@@ -1,8 +1,9 @@
 
 /**
  *ITP4507 Contemporary Topics in Software Engineering
- *@author Yung Kai Sen 220069930
- *@version  java 21.0.1 2023-10-17 LTS
+ *Assignment
+ *author: Yung Kai Sen 220069930
+ *environment:  java 21.0.1 2023-10-17 LTS
  */
 import java.util.Scanner;
 
