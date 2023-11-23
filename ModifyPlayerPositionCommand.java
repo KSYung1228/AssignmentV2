@@ -15,36 +15,48 @@ public class ModifyPlayerPositionCommand implements Command, Memento {
 
     @Override
     public void execute() {
-        System.out.print("Please input player ID:-");
-        playerId = sc.nextLine();
-        currentTeam = teamManager.getCurrentTeam();
-        if (currentTeam != null) {
-            if (currentTeam.getClass().getName().equals("FootBallTeam")) {
-                System.out.print("Position (1 = goal keeper | 2 = defender | 3 = midfielder | 4 = forward):-");
-            } else if (currentTeam.getClass().getName().equals("VolleyballTeam")) {
-                System.out.print("Position (1 = attacker | 2 = defender):-");
-            }
-            newPosition = sc.nextInt();
-            sc.nextLine();
+        try {
+            System.out.print("Please input player ID:-");
+            playerId = sc.nextLine();
+            currentTeam = teamManager.getCurrentTeam();
+            if (currentTeam != null) {
+                if (currentTeam.getClass().getName().equals("FootBallTeam")) {
+                    System.out.print("Position (1 = goal keeper | 2 = defender | 3 = midfielder | 4 = forward):-");
+                } else if (currentTeam.getClass().getName().equals("VolleyballTeam")) {
+                    System.out.print("Position (1 = attacker | 2 = defender):-");
+                }
+                newPosition = sc.nextInt();
+                sc.nextLine();
 
-            // Save the player's old position
-            oldPosition = teamManager.getPreviousPosition(playerId);
+                // Save the player's old position
+                oldPosition = teamManager.getPreviousPosition(playerId);
+            }
+            teamManager.modifyPlayerPosition(playerId, newPosition);
+            teamManager.pushCommand(this);
+            System.out.println("Position is updated.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        teamManager.modifyPlayerPosition(playerId, newPosition);
-        teamManager.pushCommand(this);
-        System.out.println("Position is updated.");
     }
 
     @Override
     public void undo() {
-        if (oldPosition != 0) {
-            teamManager.modifyPlayerPosition(playerId, oldPosition);
+        try {
+            if (oldPosition != 0) {
+                teamManager.modifyPlayerPosition(playerId, oldPosition);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
     @Override
     public void redo() {
-        teamManager.modifyPlayerPosition(playerId, newPosition);
+        try {
+            teamManager.modifyPlayerPosition(playerId, newPosition);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

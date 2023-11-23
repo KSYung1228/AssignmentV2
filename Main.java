@@ -1,21 +1,29 @@
+
+/**
+ *ITP4507 Contemporary Topics in Software Engineering
+ *@author Yung Kai Sen 220069930
+ *@version  java 21.0.1 2023-10-17 LTS
+ */
 import java.util.Scanner;
 
 public class Main {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // 创建一个新的团队管理器
+        // Create TeamManager
         TeamManager teamManager = new TeamManager();
 
-        // 创建一个新的CommandFactory
+        // Create CommandFactory
         CommandFactory commandFactory = new CommandFactory(teamManager, sc);
 
-        // 在一个循环中不断地获取用户的输入，并执行相应的命令
+        // Get input in while-Loop
         while (true) {
             System.out.println("Sport Teams Management System (STMS)");
             System.out.println("c = create team, g = set current team, a = add player, m = modify player's" + //
                     "position, d = delete player, s = show team, p = display all teams, t = change" + //
                     "team's name, u = undo, r = redo, l = list undo/redo, x = exit system");
+            // check the current team is setted or not for start loop, if yes, print current
+            // team
             if (teamManager.checkTeamList()) {
                 System.out.println(teamManager.showCurrentTeam());
             }
