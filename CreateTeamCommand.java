@@ -1,3 +1,7 @@
+
+/**
+ * command to create new team
+ */
 import java.util.Scanner;
 
 public class CreateTeamCommand implements Command, Memento {
@@ -6,11 +10,13 @@ public class CreateTeamCommand implements Command, Memento {
     private String teamID, Type, teamName;
     private Team newTeam;
 
+    // set system attribute
     public CreateTeamCommand(Scanner sc, TeamManager teamManager) {
         this.sc = sc;
         this.teamManager = teamManager;
     }
 
+    // action to create team and preset current team
     @Override
     public void execute() {
         try {
@@ -37,18 +43,21 @@ public class CreateTeamCommand implements Command, Memento {
         }
     }
 
+    // action to remove the created team, and set the current team to null
     @Override
     public void undo() {
         teamManager.removeTeam(newTeam);
         teamManager.setCurrentTeam(null);
     }
 
+    // re-create team
     @Override
     public void redo() {
         teamManager.addTeam(newTeam);
         teamManager.setCurrentTeam(teamID);
     }
 
+    // return the action description to caretaker
     @Override
     public String getDescription() {
         return "Create " + newTeam.getClass() + " team, " + teamID + ", " + teamName;

@@ -1,3 +1,7 @@
+
+/*
+ * Delete player command
+ */
 import java.util.Scanner;
 
 public class DeletePlayerCommand implements Command, Memento {
@@ -6,11 +10,13 @@ public class DeletePlayerCommand implements Command, Memento {
     private String playerId;
     private Player deletedPlayer;
 
+    // set basic attribute and use main Scanner
     public DeletePlayerCommand(Scanner sc, TeamManager teamManager) {
         this.sc = sc;
         this.teamManager = teamManager;
     }
 
+    // action to delete player
     @Override
     public void execute() {
         try {
@@ -30,6 +36,7 @@ public class DeletePlayerCommand implements Command, Memento {
         }
     }
 
+    // add player who is deleted
     @Override
     public void undo() {
         if (deletedPlayer != null) {
@@ -37,6 +44,7 @@ public class DeletePlayerCommand implements Command, Memento {
         }
     }
 
+    // delete player
     @Override
     public void redo() {
         if (deletedPlayer != null) {
@@ -44,6 +52,7 @@ public class DeletePlayerCommand implements Command, Memento {
         }
     }
 
+    // return action description to caretaker
     @Override
     public String getDescription() {
         return "Delete player, ID: " + playerId;

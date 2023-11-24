@@ -1,3 +1,6 @@
+/*
+ * Player from assignment provided
+ */
 public class Player {
     private String playerID;
     private String name;

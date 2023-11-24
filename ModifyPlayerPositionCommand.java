@@ -1,3 +1,7 @@
+
+/* 
+ *command to modify player position in current team 
+ */
 import java.util.*;
 
 public class ModifyPlayerPositionCommand implements Command, Memento {
@@ -8,11 +12,13 @@ public class ModifyPlayerPositionCommand implements Command, Memento {
     private int oldPosition;
     Team currentTeam;
 
+    // set the basic attribute
     public ModifyPlayerPositionCommand(Scanner sc, TeamManager teamManager) {
         this.sc = sc;
         this.teamManager = teamManager;
     }
 
+    // action to modify player position
     @Override
     public void execute() {
         try {
@@ -39,6 +45,7 @@ public class ModifyPlayerPositionCommand implements Command, Memento {
         }
     }
 
+    // set the player position back
     @Override
     public void undo() {
         try {
@@ -50,6 +57,7 @@ public class ModifyPlayerPositionCommand implements Command, Memento {
         }
     }
 
+    // re-set the new position to player
     @Override
     public void redo() {
         try {

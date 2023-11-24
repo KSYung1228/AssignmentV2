@@ -1,3 +1,6 @@
+/*
+ * command to active the redo action for all command chich in stack
+ */
 public class RedoCommand implements Command {
 
     private TeamManager teamManager;

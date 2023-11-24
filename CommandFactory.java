@@ -1,4 +1,8 @@
 
+/**
+ * create the command when the main call
+ * provide the switch case for user choose command
+ */
 import java.util.Scanner;
 
 public class CommandFactory {

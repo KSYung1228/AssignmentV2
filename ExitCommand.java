@@ -1,3 +1,6 @@
+/*
+ * Exit system
+ */
 public class ExitCommand implements Command {
 
     @Override

@@ -1,3 +1,6 @@
+/*
+ * Command to display detail for current team
+ */
 public class DisplayCurrentTeamCommand implements Command, Memento {
     private TeamManager teamManager;
 
@@ -5,6 +8,7 @@ public class DisplayCurrentTeamCommand implements Command, Memento {
         this.teamManager = teamManager;
     }
 
+    // action to display current team
     @Override
     public void execute() {
         Team currentTeam = teamManager.getCurrentTeam();
@@ -13,6 +17,7 @@ public class DisplayCurrentTeamCommand implements Command, Memento {
         }
     }
 
+    // dont need to do undo redo, no description return
     @Override
     public void undo() {
 

@@ -1,3 +1,7 @@
+
+/**
+ * This class is for command to add player to team
+ */
 import java.util.Scanner;
 
 public class AddPlayerCommand implements Command, Memento {
@@ -8,11 +12,13 @@ public class AddPlayerCommand implements Command, Memento {
     private int position;
     Team currentTeam;
 
+    // Use main Scanner and teamManager
     public AddPlayerCommand(Scanner sc, TeamManager teamManager) {
         this.sc = sc;
         this.teamManager = teamManager;
     }
 
+    // action to add player
     @Override
     public void execute() {
         try {
@@ -46,6 +52,7 @@ public class AddPlayerCommand implements Command, Memento {
         }
     }
 
+    // undo addPlayer = remove player
     @Override
     public void undo() {
         if (currentTeam != null) {
@@ -53,6 +60,7 @@ public class AddPlayerCommand implements Command, Memento {
         }
     }
 
+    // add player back
     @Override
     public void redo() {
         if (currentTeam != null) {

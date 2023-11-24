@@ -1,3 +1,6 @@
+/*
+ * facotry to create team, use by command
+ */
 public class TeamFactory {
 
     public static Team createTeam(String teamId, String teamType) {
